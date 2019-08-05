@@ -6,8 +6,6 @@ import reader.kart.domain.Racer
 @Repository
 class RacerRepository(override val list: ArrayList<Racer> = arrayListOf()) : ListRepository<Racer>{
 
-    fun find(code: String) : Racer? {
-        return list.find { it.code == code }
-    }
+    fun find(code: String) = list.find { it.code == code }
 
 }

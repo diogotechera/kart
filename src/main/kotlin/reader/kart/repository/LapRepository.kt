@@ -5,4 +5,8 @@ import reader.kart.domain.Lap
 import reader.kart.domain.Racer
 
 @Repository
-class LapRepository(override val list: ArrayList<Lap> = arrayListOf()) : ListRepository<Lap>
+class LapRepository(override val list: ArrayList<Lap> = arrayListOf()) : ListRepository<Lap> {
+
+    fun find(number: Int) =  list.find{it.number == number}
+
+}

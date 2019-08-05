@@ -1,6 +1,5 @@
-package reader.kart.service
+package reader.kart.builder
 
-import reader.kart.builder.FileLineBuilder
 import reader.kart.exception.InvalidLineException
 import reader.kart.factory.LineFactory
 import spock.lang.Specification
