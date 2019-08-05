@@ -13,42 +13,40 @@ class RaceFileReaderService(val raceService: RaceService) {
 
     fun processFile(fileName: String) {
         val lines = File(fileName).useLines { it.toList() }
-        lines.forEach{ processLine(it) }
-        printResult()
-        printRacersBestLaps()
-        printRaceBestLap()
-
+        lines.forEachIndexed { index, line -> processLine(index,line) }
+        printResults()
     }
 
-    private fun printRaceBestLap() {
-        val bestLap = raceService.getRaceBestLap()
-    }
-
-    private fun printRacersBestLaps() {
-        val bestLaps = raceService.getRacersBestLaps()
-
-        log.info("===================================== MELHORES VOLTAS ===================")
-        bestLaps.forEach {  it ->
-//            log.info(" ${it.racer.code} - ${it.racer.name}: ${it.number}, ${it.lapTime}, ${it.averageSpeed}")
-        }
-    }
-
-    private fun printResult() {
-        val sortedRacers = raceService.getAllRacerSortedByFinishLine()
-        log.info("===================================== RESULTADO FINAL ===================")
-        sortedRacers.forEachIndexed { index, racer ->
-            log.info("${index + 1}, ${racer.code}, ${racer.name}, ${racer.greaterLapNumber()}, ${racer.totalTime()}")
-        }
-    }
-
-    private fun processLine(lineValue: String) {
+    private fun processLine(index: Int, lineValue: String) {
         try {
             val line  = FileLineBuilder.build(lineValue)
             raceService.saveLineInformation(line)
         }catch (e : InvalidLineException){
-            log.warn("Invalid line! Ignoring...", e)
+            log.warn("Invalid line $index! Ignoring...")
         }
 
     }
+
+    private fun printResults() {
+        val sortedRacers = raceService.getAllRacerSortedByFinishLine()
+        val firstPlaceTime = sortedRacers.first().finalLapTime()
+
+        log.info("===================================== RESULT  ===================")
+        sortedRacers.forEachIndexed { index, racer ->
+            log.info("Position: ${index + 1}")
+            log.info("Racer code: ${racer.code}")
+            log.info("Racer name: ${racer.name}")
+            log.info("# of laps: ${racer.lastLapNumber()}")
+            log.info("Total time: ${racer.totalTime()}")
+            log.info("Best lap:  ${racer.bestLap().number} " +
+                    "(Lap time: ${racer.bestLap().lapTime} average Speed: ${racer.bestLap().averageSpeed})")
+            log.info("Race average speed: ${racer.averageSpeed()}")
+            if(index != 0 && racer.finishedRace())
+                log.info("Difference between the first place: ${racer.differenceBetween(firstPlaceTime)}")
+            log.info("====================================================================")
+
+        }
+    }
+
 
 }

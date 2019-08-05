@@ -1,9 +1,12 @@
 package reader.kart.domain
 
 import reader.kart.exception.DuplicatedLapException
+import reader.kart.exception.InconsistentFinishTimeException
 import reader.kart.factory.LapFactory
 import reader.kart.factory.RacerFactory
 import spock.lang.Specification
+
+import java.time.LocalTime
 
 class RacerTest extends Specification {
 
@@ -29,8 +32,7 @@ class RacerTest extends Specification {
         racer.addLap(LapFactory.VALID)
 
         then: 'it thrown an DuplicatedLapException'
-        def ex = thrown(DuplicatedLapException)
-        ex.message == "The lap is duplicated for the given racer ${LapFactory.VALID}"
+        thrown(DuplicatedLapException)
     }
 
     def 'Should be able to retrieve the greater lap number'(){
@@ -39,7 +41,7 @@ class RacerTest extends Specification {
         Racer racer = RacerFactory.VALID_WITH_LAPS
 
         when: 'It tries to retrieve the greater lap number'
-        def number = racer.greaterLapNumber()
+        def number = racer.lastLapNumber()
 
         then: 'the correct number is given'
         number == 2
@@ -81,8 +83,48 @@ class RacerTest extends Specification {
         def time = racer.totalTime()
 
         then: 'the correct time is given'
-        time.second == 32
+        time.second == 33
         time.minute == 2
+    }
+
+    def 'Should be able to calculate the racer average speed'(){
+
+        given: 'A racer with laps'
+        Racer racer = RacerFactory.VALID_WITH_LAPS
+
+        when: 'It tries to calculate the average speed'
+        def averageSpeed = racer.averageSpeed()
+
+        then: 'the correct time is given'
+        averageSpeed == 40D
+    }
+
+    def 'Should be able to calculate the difference between two time'(){
+
+        given: 'A racer with laps and time before the given time'
+        Racer racer = RacerFactory.VALID_WITH_LAPS
+        def time = LocalTime.of(12, 10, 10)
+
+        when: 'It tries to calculate the average speed'
+        def diff = racer.differenceBetween(time)
+
+        then: 'the correct time is given'
+        diff.hour == 0
+        diff.minute == 10
+        diff.second == 02
+    }
+
+    def 'Should not be able to calculate the difference between two times if the informed is after the last racer time'(){
+
+        given: 'A racer with laps and time after the given time'
+        Racer racer = RacerFactory.VALID_WITH_LAPS
+        def time = LocalTime.of(12, 30, 00)
+
+        when: 'It tries to calculate the average speed'
+        racer.differenceBetween(time)
+
+        then: 'the correct time is given'
+        thrown(InconsistentFinishTimeException)
     }
 
 }
