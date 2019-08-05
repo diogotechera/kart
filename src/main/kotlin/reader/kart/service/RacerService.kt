@@ -9,4 +9,6 @@ class RacerService(val racerRepository: RacerRepository) {
 
     fun save(racer: Racer) = racerRepository.find(racer.code) ?: racerRepository.save(racer)
 
+    fun findAll() = racerRepository.findAll()
+
 }

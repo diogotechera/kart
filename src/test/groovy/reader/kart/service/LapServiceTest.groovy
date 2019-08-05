@@ -21,23 +21,7 @@ class LapServiceTest extends KartReaderApplicationTest {
         then: 'it should save it'
         save
         save.number == 1
-        save.racerLaps.size() == 0
-    }
-
-    def 'Should retrieve a lap if already exists'(){
-
-        given: 'A saved lap'
-        Lap lap = LapFactory.VALID
-        service.save(lap)
-
-        when: 'It tries to save again'
-        Lap lap2 = LapFactory.VALID2
-        def save = service.save(lap2)
-
-        then: 'it should not save, just retrieve with the old value'
-        save
-        save.number == 1
-        save.racerLaps.size() == 0
+        save.averageSpeed == 35.44D
     }
 
 }

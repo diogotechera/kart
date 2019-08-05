@@ -9,6 +9,6 @@ interface ListRepository<T> {
         return t
     }
 
-    fun findAll() =  list
+    fun findAll() = list
 
 }

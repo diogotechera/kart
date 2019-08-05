@@ -5,5 +5,4 @@ import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
 @SpringBootTest
-@ContextConfiguration(classes = [KartReaderApplication])
 class KartReaderApplicationTest extends Specification {}

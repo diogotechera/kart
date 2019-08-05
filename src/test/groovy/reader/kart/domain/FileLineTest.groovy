@@ -2,6 +2,7 @@ package reader.kart.domain
 
 
 import reader.kart.factory.FileLineFactory
+import reader.kart.factory.RacerFactory
 import spock.lang.Specification
 
 class FileLineTest extends Specification {
@@ -31,19 +32,4 @@ class FileLineTest extends Specification {
         lap
         lap.number == 1
     }
-
-    def 'Given a valid FileLine it should be able to create a RacerLap'(){
-        given: 'A valid fileLine'
-        FileLine fileLine = FileLineFactory.VALID
-
-        when: 'It is converted to RacerLap'
-        def racerLap = fileLine.toRacerLap()
-
-        then: 'it should create a valid RacerLap'
-        racerLap
-        racerLap.time
-        racerLap.lapTime
-        racerLap.averageSpeed == 45.40D
-    }
-
 }

@@ -21,11 +21,11 @@ class RacerServiceTest extends KartReaderApplicationTest {
 
         then: 'it should save it'
         save
-        save.code == '038'
-        save.name =='F.MASSA'
+        save.code == '001'
+        save.name =='S.MOCK'
     }
 
-    def 'Should add a racer if already exists'(){
+    def 'Should not add a racer if already exists'(){
 
         given: 'A saved racer'
         Racer racer = RacerFactory.VALID
@@ -36,8 +36,8 @@ class RacerServiceTest extends KartReaderApplicationTest {
 
         then: 'it should not save, just retrieve with the old value'
         save
-        save.code == '038'
-        save.name =='F.MASSA'
+        save.code == '001'
+        save.name =='S.MOCK'
     }
 
 }

@@ -2,10 +2,10 @@ package reader.kart.domain
 
 import reader.kart.exception.InvalidLapException
 import reader.kart.exception.RaceAlreadyFinishedException
+import java.time.LocalTime
 
-data class Lap(val number : Int, private val racerLaps: ArrayList<RacerLap> = arrayListOf()){
+data class Lap(val number : Int, val currentTime : LocalTime, val lapTime : LocalTime, val averageSpeed : Double){
 
-    fun addRacerLap(racerLap: RacerLap) =  racerLaps.add(racerLap)
 
     fun validate() {
 
