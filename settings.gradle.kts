@@ -1,1 +1,1 @@
-rootProject.name = "kart"
+rootProject.name = "kart-reader"
