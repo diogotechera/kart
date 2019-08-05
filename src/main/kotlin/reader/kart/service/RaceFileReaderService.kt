@@ -28,7 +28,7 @@ class RaceFileReaderService(val raceService: RaceService) {
     }
 
     private fun printResults() {
-        val sortedRacers = raceService.getAllRacerSortedByFinishLine()
+        val sortedRacers = raceService.getAllRacersByFinishTime()
         val firstPlaceTime = sortedRacers.first().finalLapTime()
 
         log.info("===================================== RESULT  ===================")

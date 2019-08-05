@@ -14,7 +14,7 @@ class RaceService(val racerService: RacerService) {
         racer.addLap(lap)
     }
 
-    fun getAllRacerSortedByFinishLine() : MutableList<Racer> {
+    fun getAllRacersByFinishTime() : MutableList<Racer> {
         val allRacers = racerService.findAll()
         allRacers.sortWith(compareBy({- it.lastLapNumber()}, {it.finalLapTime()}))
         return allRacers
