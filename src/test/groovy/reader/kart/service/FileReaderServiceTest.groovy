@@ -8,7 +8,7 @@ class FileReaderServiceTest extends KartReaderApplicationTest {
     @Autowired
     RaceFileReaderService fileReaderService
 
-    def 'Should build a valid FileLine'(){
+    def 'Should throw error when file is not found'(){
          when: 'It calls processFile with a non existent file'
             fileReaderService.processFile('does-not-exists.txt')
         then: 'it should throw FileNotFoundException'
