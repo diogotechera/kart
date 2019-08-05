@@ -8,10 +8,7 @@ import reader.kart.repository.RacerRepository
 class RacerService(val racerRepository: RacerRepository) {
 
     fun save(racer: Racer): Racer {
-        val persisted = racerRepository.find(racer.code)
-        if(persisted == null)
-            racerRepository.save(racer)
-        return persisted!!
+        return racerRepository.find(racer.code) ?: racerRepository.save(racer)
     }
 
 }
