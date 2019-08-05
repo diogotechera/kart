@@ -1,13 +1,13 @@
 package reader.kart.service
 
-import reader.kart.builder.LineBuilder
+import reader.kart.builder.FileLineBuilder
 import reader.kart.exception.InvalidLineException
 import reader.kart.factory.LineFactory
 import spock.lang.Specification
 
 class FileLineBuilderTest extends Specification {
 
-    LineBuilder lineBuilder = new LineBuilder()
+    FileLineBuilder lineBuilder = new FileLineBuilder()
 
     def 'Should build a valid FileLine'(){
 
