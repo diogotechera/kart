@@ -7,6 +7,10 @@ data class FileLine(val time : LocalTime, val racerCode: String, val racerName :
 
     fun toRacer() = Racer(racerCode,racerName)
 
+    fun toLap() = Lap(lapNumber)
+
+    fun toRacerLap() = RacerLap(time, lapTime, averageSpeed)
+
 }
 
 
