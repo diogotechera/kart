@@ -6,7 +6,7 @@ Uma pequena aplicação que lê os logs de uma corrida de Kart em um formato e m
 
 * Java Versão 1.8
 
-$$ Build
+## Build
 
 Para executar os testes e gerar o jar, apenas executar o seguinte comando na raiz do projeto:
 
