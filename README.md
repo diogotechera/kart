@@ -29,6 +29,6 @@ Para rodar, apenas executar o seguinte comando(ele usa o Gradle embedded para ex
 ```
 HH:mm:ss.SSS      COD_PILOTO – NOME_PILOTO            INT(1-4)		 MM:ss.SSS          {DOUBLE}
 ```
-* Quando a linha não segue o padrão, ela é ignorada
+* Quando a linha não segue o padrão, ela é ignorada e o processamento do arquivo continua
 * Quando a linha segue o padrão, mas há inconsistência nos dados (Data inválida, número de voltas duplicados, mais voltas do que o máximo etc), o processamento é interrompido
 
