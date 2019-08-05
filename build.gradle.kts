@@ -20,10 +20,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
     testImplementation ("org.spockframework:spock-spring:1.1-groovy-2.4")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
 
 }
 
