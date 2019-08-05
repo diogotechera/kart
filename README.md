@@ -2,11 +2,11 @@
 
 Uma pequena aplicação que lê os logs de uma corrida de Kart em um formato e mostra o resulta no Syslog usando Kotlin, Spring Boot para a aplicação e Spock e Groovy para testes
 
-## O que você precisa para executar
+### O que você precisa para executar
 
 * Java Versão 1.8
 
-## Build
+### Build
 
 Para executar os testes e gerar o jar, apenas executar o seguinte comando na raiz do projeto:
 
@@ -21,7 +21,7 @@ $ ./gradlew bootRun
 ----
 
 
-== Premissas
+### Premissas
 
 * A ideia foi usar o mínimo de frameworks possíveis, para depender apenas dos recursos da linguagem(Kotlin e Java), usando apenas um Spring Boot para uma simples Injeção de Dependência
 * Foi escolhido o Spock, pois é um framework de teste que se suporta no BDD, para usar o máximo dos testes como documentação do projeto
