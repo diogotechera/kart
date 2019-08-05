@@ -19,7 +19,7 @@ class RacerServiceTest extends KartReaderApplicationTest {
         when: 'It tries to save'
         def save = service.save(racer)
 
-        then: 'it should save it '
+        then: 'it should save it'
         save
         save.code == '038'
         save.name =='F.MASSA'
@@ -34,7 +34,7 @@ class RacerServiceTest extends KartReaderApplicationTest {
         when: 'It tries to save again'
         def save = service.save(RacerFactory.VALID2)
 
-        then: 'it should not save, and retrieve the same value '
+        then: 'it should not save, just retrieve with the old value'
         save
         save.code == '038'
         save.name =='F.MASSA'
