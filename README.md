@@ -10,8 +10,10 @@ Uma pequena aplicação que lê os logs de uma corrida de Kart em um formato e m
 
 * [Kotlin](https://kotlinlang.org/) 1.2.71
 * [Spring Boot](https://spring.io/projects/spring-boot) 2.1.6
-* [Groovy](https://groovy-lang.org/) 2.4.9
-* [Spock](http://spockframework.org/) 1.1
+* [Groovy*](https://groovy-lang.org/) 2.4.9
+* [Spock*](http://spockframework.org/) 1.1
+
+ \*: Usados unicamente para escrita dos testes
 
 ### Build
 
